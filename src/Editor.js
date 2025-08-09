@@ -22,9 +22,11 @@ const Editor = () => {
   // Debug-funktion för att kontrollera Supabase-anslutning
   const testSupabaseConnection = async () => {
     try {
-      console.log('🔍 Testar Supabase-anslutning...')
-      console.log('URL:', process.env.REACT_APP_SUPABASE_URL ? '✅ Konfigurerad' : '❌ Saknas')
-      console.log('Key:', process.env.REACT_APP_SUPABASE_ANON_KEY ? '✅ Konfigurerad' : '❌ Saknas')
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🔍 Testar Supabase-anslutning...')
+        console.log('URL:', process.env.REACT_APP_SUPABASE_URL ? '✅ Konfigurerad' : '❌ Saknas')
+        console.log('Key:', process.env.REACT_APP_SUPABASE_ANON_KEY ? '✅ Konfigurerad' : '❌ Saknas')
+      }
       
       if (!process.env.REACT_APP_SUPABASE_URL || !process.env.REACT_APP_SUPABASE_ANON_KEY) {
         throw new Error('Supabase miljövariabler saknas')
@@ -34,14 +36,20 @@ const Editor = () => {
       const { error } = await supabase.from('documents').select('id').limit(1)
       
       if (error) {
-        console.error('❌ Supabase-anslutning misslyckades:', error)
+        if (process.env.NODE_ENV === 'development') {
+          console.error('❌ Supabase-anslutning misslyckades:', error)
+        }
         return false
       } else {
-        console.log('✅ Supabase-anslutning lyckades!')
+        if (process.env.NODE_ENV === 'development') {
+          console.log('✅ Supabase-anslutning lyckades!')
+        }
         return true
       }
     } catch (error) {
-      console.error('❌ Supabase-test fel:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('❌ Supabase-test fel:', error)
+      }
       return false
     }
   }
@@ -70,7 +78,9 @@ const Editor = () => {
         )
 
       if (error) {
-        console.error('Supabase fel:', error)
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Supabase fel:', error)
+        }
         setError(`Databasfel: ${error.message}`)
         setSaveStatus('Fel vid sparande')
       } else {
@@ -80,7 +90,9 @@ const Editor = () => {
         setTimeout(() => setSaveStatus(''), 2000)
       }
     } catch (error) {
-      console.error('Fel vid sparande:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Fel vid sparande:', error)
+      }
       setError(`Sparfel: ${error.message}`)
       setSaveStatus('Fel vid sparande')
     }
@@ -105,7 +117,9 @@ const Editor = () => {
         .single()
 
       if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
-        console.error('Fel vid hämtning:', error)
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Fel vid hämtning:', error)
+        }
         setError(`Hämtningsfel: ${error.message}`)
         // Sätt standardinnehåll om det inte finns något sparat
         if (editor) {
@@ -123,7 +137,9 @@ const Editor = () => {
         }
       }
     } catch (error) {
-      console.error('Fel vid hämtning:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Fel vid hämtning:', error)
+      }
       setError(`Hämtningsfel: ${error.message}`)
       if (editor) {
         editor.commands.setContent('<p>Skriv här...</p>')
