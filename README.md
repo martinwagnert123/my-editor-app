@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+# Min Tiptap Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+En kraftfull textredigerare byggd med React och Tiptap med Supabase-integration för att spara text automatiskt.
 
-## Available Scripts
+## ✨ Funktioner
 
-In the project directory, you can run:
+- **Rich Text Editing**: Formatera text med fet, kursiv, understruken text
+- **Rubriker**: Skapa H1 och H2 rubriker
+- **Listor**: Skapa punktlistor och numrerade listor
+- **Kod**: Formatera kod med `code` taggar
+- **Auto-save**: Text sparas automatiskt i Supabase
+- **Persistens**: Text finns kvar när du laddar om sidan
+- **Modern UI**: Snygg och responsiv design
 
-### `npm start`
+## 🚀 Snabb Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Lokal utveckling
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Klona projektet:**
+```bash
+git clone <repository-url>
+cd my-editor-app
+```
 
-### `npm test`
+2. **Installera beroenden:**
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Konfigurera miljövariabler:**
+Skapa en `.env.local` fil med:
+```
+REACT_APP_SUPABASE_URL=https://btbrdiaanylvjttuyyoq.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm
+```
 
-### `npm run build`
+4. **Starta utvecklingsservern:**
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5. **Öppna [http://localhost:3000](http://localhost:3000)** i din webbläsare
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Snabb deployment med Vercel (Rekommenderat)
 
-### `npm run build` fails to minify
+1. **Bygg appen:**
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. **Deploya till Vercel:**
+   - Gå till [vercel.com](https://vercel.com)
+   - Logga in och klicka "New Project"
+   - Dra och släpp `build`-mappen
+   - Konfigurera miljövariabler (se ovan)
+   - Klicka "Deploy"
+
+#### Alternativa plattformar
+
+- **Netlify**: Dra och släpp `build`-mappen till [netlify.com](https://netlify.com)
+- **GitHub Pages**: Se `DEPLOYMENT.md` för instruktioner
+- **Firebase Hosting**: Se `DEPLOYMENT.md` för instruktioner
+
+## 🛠️ Teknisk Stack
+
+- **React 19**: Senaste versionen av React
+- **Tiptap**: Kraftfull rich text editor
+- **Supabase**: Backend-as-a-Service för databas
+- **CSS**: Modern styling med flexbox och CSS Grid
+
+## 📁 Projektstruktur
+
+```
+my-editor-app/
+├── src/
+│   ├── App.js              # Huvudkomponent
+│   ├── Editor.js           # Tiptap editor-komponent
+│   ├── supabase.js         # Supabase-konfiguration
+│   └── App.css             # Styling
+├── public/                 # Statiska filer
+├── build/                  # Produktionsbygg (genereras)
+├── .env.local             # Miljövariabler (skapa själv)
+└── DEPLOYMENT.md          # Deployment-instruktioner
+```
+
+## 🔧 Konfiguration
+
+### Miljövariabler
+
+Skapa en `.env.local` fil i projektets rot:
+
+```bash
+REACT_APP_SUPABASE_URL=https://btbrdiaanylvjttuyyoq.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm
+```
+
+### Supabase Setup
+
+1. Gå till [supabase.com](https://supabase.com)
+2. Skapa ett nytt projekt
+3. Kör SQL-koden från `supabase-setup.sql` i SQL Editor
+4. Kopiera URL och API-nyckel till `.env.local`
+
+## 🎯 Användning
+
+- **Skriv text** direkt i redigeringsområdet
+- **Formatera text** med verktygsfältet (Bold, Italic, etc.)
+- **Auto-save** - text sparas automatiskt när du skriver
+- **Persistens** - text finns kvar när du laddar om sidan
+
+## 🐛 Felsökning
+
+### Vanliga problem:
+
+1. **"Supabase miljövariabler saknas"**
+   - Kontrollera att `.env.local` finns och innehåller rätt värden
+   - Starta om utvecklingsservern
+
+2. **"Tabellen documents finns inte"**
+   - Kör SQL-koden från `supabase-setup.sql` i Supabase SQL Editor
+
+3. **"Build fails"**
+   - Kontrollera att alla dependencies är installerade: `npm install`
+   - Rensa cache: `npm start -- --reset-cache`
+
+## 📚 Resurser
+
+- [React Documentation](https://reactjs.org/docs/)
+- [Tiptap Documentation](https://tiptap.dev/docs)
+- [Supabase Documentation](https://supabase.com/docs)
+- [Vercel Deployment](https://vercel.com/docs)
+
+## 🤝 Bidrag
+
+1. Forka projektet
+2. Skapa en feature branch (`git checkout -b feature/AmazingFeature`)
+3. Committa dina ändringar (`git commit -m 'Add some AmazingFeature'`)
+4. Pusha till branchen (`git push origin feature/AmazingFeature`)
+5. Öppna en Pull Request
+
+## 📄 Licens
+
+Detta projekt är licensierat under MIT License - se [LICENSE](LICENSE) filen för detaljer.
+
+## 🎉 Gratulerar!
+
+Din Tiptap Editor är nu redo att användas! 🚀

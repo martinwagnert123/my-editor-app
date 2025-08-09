@@ -1,0 +1,4 @@
+# Kopiera detta innehåll till din .env.local fil:
+
+REACT_APP_SUPABASE_URL=https://btbrdiaanylvjttuyyoq.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm
