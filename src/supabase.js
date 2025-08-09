@@ -1,6 +1,7 @@
 // Supabase configuration
 import { createClient } from '@supabase/supabase-js'
 
+// Hämta miljövariabler med fallback
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://btbrdiaanylvjttuyyoq.supabase.co'
 const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm'
 
@@ -11,6 +12,7 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
+// Skapa Supabase-klienten
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Logga endast i utveckling

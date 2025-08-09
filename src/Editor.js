@@ -28,7 +28,11 @@ const Editor = () => {
         console.log('Key:', process.env.REACT_APP_SUPABASE_ANON_KEY ? '✅ Konfigurerad' : '❌ Saknas')
       }
       
-      if (!process.env.REACT_APP_SUPABASE_URL || !process.env.REACT_APP_SUPABASE_ANON_KEY) {
+      // Använd fallback-värden om miljövariabler saknas
+      const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://btbrdiaanylvjttuyyoq.supabase.co'
+      const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm'
+      
+      if (!supabaseUrl || !supabaseAnonKey) {
         throw new Error('Supabase miljövariabler saknas')
       }
 
@@ -63,7 +67,7 @@ const Editor = () => {
       // Testa anslutningen först
       const isConnected = await testSupabaseConnection()
       if (!isConnected) {
-        throw new Error('Kan inte ansluta till Supabase. Kontrollera .env.local filen och internetanslutning.')
+        throw new Error('Kan inte ansluta till Supabase. Kontrollera internetanslutning.')
       }
 
       const { error } = await supabase
@@ -107,7 +111,7 @@ const Editor = () => {
       // Testa anslutningen först
       const isConnected = await testSupabaseConnection()
       if (!isConnected) {
-        throw new Error('Kan inte ansluta till Supabase. Kontrollera .env.local filen och internetanslutning.')
+        throw new Error('Kan inte ansluta till Supabase. Kontrollera internetanslutning.')
       }
       
       const { data, error } = await supabase
