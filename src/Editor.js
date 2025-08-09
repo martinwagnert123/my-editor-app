@@ -4,12 +4,14 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { supabase } from './supabase'
 import GoogleDocsIntegration from './GoogleDocsIntegration'
+import NotionIntegration from './NotionIntegration'
 
 const Editor = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [saveStatus, setSaveStatus] = useState('')
   const [error, setError] = useState('')
   const [showGoogleIntegration, setShowGoogleIntegration] = useState(false)
+  const [showNotionIntegration, setShowNotionIntegration] = useState(false)
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -234,6 +236,12 @@ const Editor = () => {
           >
             {showGoogleIntegration ? 'Dölj' : 'Visa'} Google Docs
           </button>
+          <button
+            onClick={() => setShowNotionIntegration(!showNotionIntegration)}
+            className="notion-toggle"
+          >
+            {showNotionIntegration ? 'Dölj' : 'Visa'} Notion
+          </button>
         </div>
         <div className="save-status">
           {isLoading ? 'Laddar...' : saveStatus}
@@ -249,6 +257,12 @@ const Editor = () => {
       {showGoogleIntegration && (
         <div className="google-integration-section">
           <GoogleDocsIntegration editor={editor} />
+        </div>
+      )}
+      
+      {showNotionIntegration && (
+        <div className="notion-integration-section">
+          <NotionIntegration editor={editor} />
         </div>
       )}
     </div>

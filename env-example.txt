@@ -1,4 +1,13 @@
 # Kopiera detta innehåll till din .env.local fil:
 
+# Supabase Configuration
 REACT_APP_SUPABASE_URL=https://btbrdiaanylvjttuyyoq.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=sb_publishable_9t8tb-nCBTTqCqAylVDZcQ_T3T0yVcm
+
+# Notion Integration (valfritt)
+# REACT_APP_NOTION_TOKEN=secret_your_integration_token_here
+# REACT_APP_NOTION_DATABASE_ID=your_database_id_here
+
+# Google Drive Integration (valfritt)
+# REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id_here
+# REACT_APP_GOOGLE_API_KEY=your_google_api_key_here
