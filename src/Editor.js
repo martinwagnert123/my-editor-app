@@ -3,11 +3,13 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { supabase } from './supabase'
+import GoogleDocsIntegration from './GoogleDocsIntegration'
 
 const Editor = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [saveStatus, setSaveStatus] = useState('')
   const [error, setError] = useState('')
+  const [showGoogleIntegration, setShowGoogleIntegration] = useState(false)
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -226,6 +228,12 @@ const Editor = () => {
           >
             Ordered List
           </button>
+          <button
+            onClick={() => setShowGoogleIntegration(!showGoogleIntegration)}
+            className="google-docs-toggle"
+          >
+            {showGoogleIntegration ? 'Dölj' : 'Visa'} Google Docs
+          </button>
         </div>
         <div className="save-status">
           {isLoading ? 'Laddar...' : saveStatus}
@@ -237,6 +245,12 @@ const Editor = () => {
         </div>
       )}
       <EditorContent editor={editor} />
+      
+      {showGoogleIntegration && (
+        <div className="google-integration-section">
+          <GoogleDocsIntegration editor={editor} />
+        </div>
+      )}
     </div>
   )
 }
